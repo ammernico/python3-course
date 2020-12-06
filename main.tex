@@ -1,0 +1,631 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{tabularx}
+\usepackage{comment}
+\usepackage[a4paper, left=2cm, right=2cm, top=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{tcolorbox}
+
+\definecolor{dimgray}{rgb}{0.41, 0.41, 0.41}
+\definecolor{arsenic}{rgb}{0.23, 0.27, 0.29}
+\definecolor{darkgray}{html}{303030}
+\definecolor{gray}{html}{464646}
+
+\newtcolorbox{mybox}[3][]
+{
+  colframe = #2!25,
+  colback  = #2!10,
+  coltitle = #2!20!black,  
+  title    = {#3},
+  #1,
+}
+
+
+\pagecolor{darkgray}
+\color{white}
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{figure}[h!]
+\vskip1in
+\begin{center}
+\includegraphics[width = 5 cm]{logo.png}
+\end{center}
+\end{figure}
+
+
+
+\begin{center}
+\large{\textbf{Die Einführung in Python an der Uni Tübingen}}
+\end{center}
+
+\vskip2.5cm
+
+\begin{center}
+\textbf{von}
+\end{center}
+
+\vskip0.6cm
+
+\begin{center}
+\textbf{Nico Steinle}
+\end{center}
+
+\vskip3.5cm
+ 
+\begin{center}
+\textbf{Dieses Script ist für den persönlichen gebrauch gedacht}
+\end{center}
+
+\begin{center}
+\textbf{und dokumentiert nur den Inhalt des Kurses}
+\end{center}
+\vskip2cm
+\begin{center}
+\textbf{2020 - 2021}\\
+\textbf{V0.1}
+\end{center}
+
+% End of the first page
+
+% Start of the second page
+
+\newpage
+\section{Video 01}
+Das erste Video ist über das installieren von Python. Deshalb ignoriert.\\
+\section{Video 02 Einführung und Werkzeuge}
+Inhalte des Kurses:
+\begin{align}
+    \item
+    \item Was ist Python?
+    \item Grundlagen
+    \item Variablen und Datentypen
+    \item Datenstrukturen
+    \item Kontrollstrukturen
+    \item Funktionen
+    \item Objektorientierte Programmierung
+    \item Datenanalyse und -visualisierung
+    \item Interaktive Dokumente mit Jupyter Notebook
+\end{align}
+
+\subsection{Was ist Python?}
+Von dem niederländischen Programmierer Guido van Rossum 1989 entwickelt.\\
+Die Geschíchte:\\
+Python 1.0 (Erste Vollversion):Januar 1994\\
+Python 2.0:Oktober 2000\\
+Python 3.0:Dezember 2008\\
+Python 2.7.18 (Letzte 2.x Version, keine weitere Unterstützung):20.April 2020\\
+Python 3.9.0 (neuster Version):5.Oktober 2020\\\\
+Warum Python?\\
+Es ist eine sehr übersichtliche Sprache mit klarer Syntax was es gut für Programmieranfänger macht.\\
+Python kann durch Pakete erweitert werden was flexibel macht. Es gibt ein große Nutzergemeinde und es ist eine der wichtigsten Sprachen in Forschung und Wirtschaft.\\
+In Ranglisten für Programmiersprachen ist es immer sehr weit oben.\\
+\subsection{Grundlagen}
+1 + 1\\
+2\\
+2 + 2\\
+4\\
+Man kann durch ein \textbackslash die Eingabe über mehrere Zeilen aufteilen.\\
+1 + \textbackslash \\
+... Python wartet nun auf die erneute Eingabe des Benutzers\\
+... 1\\
+2\\\\
+\newpage
+Zum erstellen von Python Files reicht ein normaler Texteditor. Es wird aber ein Code editing Programm empfohlen das die Syntax hervorhebt und mit Code completion arbeitet. Was das arbeiten mit Python deutlich einfacher gestaltet.\\\\
+Warum ist das Einrückungen wichtig sind:\\
+Viele Programmiersprachen verwenden etwa Klammern, um Code in Blöcken zu organisieren. Solche Blöcke können beispielsweise Schleifen sein, in denen man die gleiche Operation für jeden Bestandteil einer Sammlung von Werten ausführen lässt. Hier ist ein Beispiel in R: Es gibt die Zahlen von eins bis zehn nacheinander aus:\\
+\begin{verbatim}
+for(i in 1:10){
+    print(i)
+}
+\end{verbatim}
+Die R Klammern verwendet um den Code zu strukturieren, könnte man das ganze Stück auch linksbündig (und/oder in einer einzigen Zeile) schreiben und es würde immer noch funktionieren:\\
+\begin{verbatim}
+for(i in 1:10) {print(i)}
+\end{verbatim}
+Für Python sind solche Einrückungen nötig, denn sonst kann es die Rang- und Reihenfolge der verschiedenen Codesesegmente nicht korrekt bewerten. Auch muss die Anzahl der Einrückungen pro Code-Level konstant bleiben. Normalerweise verwendet man vier Leerstellen; Sie sollten den Tabulator hier vermeiden:\\
+\begin{verbatim}
+for i in range (1, 11):
+    print(i)
+\end{verbatim}
+Dadurch, dass Blöcke eingerückt und weniger Klammern verwendet werden, wird der Code aber auch leichter lesbar.\\
+\section{Video 03}
+\subsection{Arithmetische Operationen: Python als Taschenrechner}
+\begin{verbatim}
+Addieren                    +
+Subtrahieren                -
+Multiplizieren              *
+Dividieren                  /
+Potenzieren                 **
+Teilungsrest (Modulus)      %
+Ganzzahldivision            //
+\end{verbatim}
+
+\subsection{Hello World!}
+\begin{verbatim}
+print('Hello World!')
+\end{verbatim}
+\\
+Was passiert hier?
+In dieser kurzen Zeile sehen wir bereits einige wichtige Aspekte von Python und auch anderen Programmiersprachen sowie einen der augenfälligsten Unterschiede zwischen Python2 und Python3:\\
+Es gibt Funktionen. Funktionen erlauben es Ihnen, Code für eine bestimmte Aufgabe zu schreiben und diesen dann immer wieder zu verwenden. Viele Funktionen haben Parameter, d.h., Sie können Objekte wie etwa die Phrase "Hello World!" oder eine Zahl als Argumente an die Funktion weitergeben und von der bearbeiten lassen. Man kann die bereits in Python integrierten Funktionen nutzen (wie hier print()) oder eigene Funktionen schreiben.\\
+\newpage
+Es gibt verschiedene Datentypen. "Hello World!" ist eine Zeichenkette (character string), also eine Abfolge von Buchstaben, Leerzeichen, Satzzeichen, oder auch Ziffern. Es steht deshalb in Anführungszeichen, während etwa eine Zahl wie 12345 ohne Anführungszeichen auskommt.\\
+Beachten Sie folgenden Unterschied zwischen Python2 und 3: In Python3 ist print eine Funktion und der ausgebende Text steht in Klammern: print("Hello World!") In Python2 war print eine Anweisung und verwendete deshalb keine Klammern:\\
+\begin{verbatim}
+print 'Hello World!'
+\end{verbatim}
+\subsection{Variablen}
+Variablen sind ein wichtiges Werkzeug, wenn man mit Python (und anderen Sprachen arbeitet):\\
+$a = 1$\\
+In diesem Fall haben wir ein sog. Objekt(object) erzeugt (dazu später mehr) und einer Variable(variable)zugewiesen. Eine Variable ein Verweis auf einen gespeicherten Wert. Das kann ein einzelnes Zeichen oder ein ganzer Datensatz sein. Sie können sich den Wert der Variable anzeigen lassen, indem Sie einfach deren Namen in die Konsole eingeben.\\
+Der Wert einer Variablen kann jederzeit geändert werden. Man kann auch der gleichen Variable einen zweiten Namen zuweisen.\\
+Hier wird kein zweites Objekt erzeugt, sondern nur ein zweiter Verweis. Sie können das sehen, wenn Sie sich die ID des Objektes mit der $id()$ Funktion anzeigen lassen. Diese IDs werden sich von Computer zu Computer und Sitzung zu Sitzung unterscheiden.\\
+Wenn sich der Wert einer Variable ändert, ändert sich auch die ID. Es wird quasi ein neu erzeugt.\\
+\begin{verbatim}
+a=300
+b=300
+c=30
+d=30
+\end{verbatim}
+Danach noch die id() a-d anzeigen lassen.\\
+\begin{verbatim}
+>>> id(a)
+2405776730096
+>>> id(b)
+2405776730320
+>>> id(c)
+2405775600848
+>>> id(d)
+2405775600848
+\end{verbatim}
+Als Sie Python gestartet haben, hat Python für einen kleinen Zahlenbereich bereits Objekte erstellt (ganze Zahlen von -5 bis 256) und verwendet sie dann bei der Ausführung Ihres Codes. Python kann dadurch etwas effizienter arbeiten.\\
+\subsubsection{Variablennamen: Regeln}
+Variablennamen können folgende Zeichen beinhalten:\\
+\begin{align}
+    \item Buchstaben
+    \item Zahlen
+    \item Unterstrich
+\end{align}
+\newpage
+Es bestehen zwei wichtige Einschränkungen: Variablennamen dürfen nur mit einem Unterstrich oder einem Buchstaben beginnen.\\
+Ein weiterer wichtiger Punkt: Python achtet bei Variablennamen auf Groß- und Kleinschreibung.\\
+\subsubsection{Variablennamen: Format}
+Aus technischer Sicht steht es ihnen frei, wie Sie Variblennamen gestalten, solange Sie Namen, die aus mehreren Teilen(Wörtern, Zahlen) bestehen, zusammenschreiben. So können sie etwa eine Variable, die sich auf die Durchschittstemperatur für Mai 2020 bezieht, folgendermaßen schreiben:\\
+DURCHSCHNITTSTEMPERATURMAI2020\\\\
+Das ist allerdings schwer zu lesen. Bessere Alternativen sind:\\
+Der erste Buchstaben in jedem Wort wird groß-, der Rest kleingeschrieben (Pascal Case):\\
+DurchschittTemperaturOktober2019\\\\
+Wie bei Pascal Case, nur wird der erste Buchstabe des Namens kleingeschrieben (Camel Case):\\
+durchschnittTemperaturOktober2019\\\\
+Oder das Variablennamen immer klein geschrieben und Wörter durch einen Unterstrich getrennt werden (Snake Case):\\
+\begin{verbatim}
+durchschnitt_temperatur_oktober_2019
+\end{verbatim}
+Die Wahl bleibt letzendlich Ihnen überlassen, solange Sie konstant sind. Wenn Sie mit anderen an einem Projekt arbeiten, fragen Sie, ob es interne Richtlinien gibt.\\
+\subsubsection{Schlüsselwörter (keywords)}
+Diese Liste ändert sich mit den Versionen. Man kann die aktuelle Liste mit help("keywords") anzeigen lassen.\\
+\subsubsection{Variablennamen: Was noch zu beachten ist}
+Verwenden Sie klare und eindeutige Namen:\\
+DurchschittTemperaturOktober2019 statt xy\\\\
+Sie können zwar die Namen von existierenden Funktionen als Variablennamen benutzen, sollen es aber nicht tun, um Verwirrungen zu vermeiden.\\
+\subsection{Datentypen}
+Geben Sie den folgenden Code in die Konsole ein:\\
+\begin{verbatim}
+1 + 1
+1 + "a"
+"a" + "b"
+3 * "abc"
+\end{verbatim}
+\newpage
+\begin{verbatim}
+>>> 1 + 1
+2
+>>> 1 + "a"
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+>>> "a" + "b"
+'ab'
+>>> 3* "abc"
+'abcabcabc'
+\end{verbatim}
+Der Grund für den Fehler ist, dass es in Python verschiedene Datentypen gibt, mit denen man unterschiedliche Sachen machen kann und die etwa von arithmetischen Operatoren unterschiedlich behandelt werden.\\
+In diesem Fall haben Sie versucht, den Operator + mit zwei verschiedenen Datentypen (int[integer] und str[string]) zu verwenden, was dieser nicht erlaubt.\\
+\subsubsection{Boolesche Werte}
+Ein bool (boolean) kann nur einen von zwei Werten haben: True (Wahr) oder False (Falsch). True wird mit 1 gleichgesetzt und False mit 0. Dieser Typ kommt etwa zum Einsatz, wenn Sie testen, ob der Wert einer Variablen eine bestimmte Eigenschaft hat.\\
+In [2]:
+\begin{verbatim}
+a = "Hallo"
+a.isalpha()   #Beinhaltet a nur Buchstaben?
+\end{verbatim}
+Out[2]: True\\
+In [3]:
+\begin{verbatim}
+a.isanum()    #Beinhaltet a nur alphanumerische Zahlen? 
+\end{verbatim}
+Out[3]: True\\
+In [4]:
+\begin{verbatim}
+a.isdigit()   #Beinhaltet a nur Zahlen?
+\end{verbatim}
+Out[4]: False\\
+
+\subsubsection{Zeichenketten}
+Zeichenketten, oder character strings/strings, sind Aneinanderreihungen von Zeichen (Buchstababen, Zahlen, Satzzeichen, Leerstellen, usw.) von beliebiger Länge. Sie werden bei der Definition immer in Anführungszeichen (normalerweise doppelt) gesetzt:\\
+\begin{verbatim}
+>>> a = "Hello World!"
+\end{verbatim}
+Wenn eine Zeichenkette ein Anführungszeichen enthalten soll, haben Sie zwei Möglichkeiten:\\
+Sie setzen vor das Anführungszeichen einen backslash. Dieser funktioniert als sog. Escape-Zeichen (escape character):\\
+\begin{verbatim}
+>>> a = "Sie sagt \"Hallo\""
+\end{verbatim}
+Wenn Sie ein doppeltes Anführungszeichen in die Zeichenketten einfügen wollen, umschließen Sie die ganze Kette mit einfachen Anführungszeichen und umgekehrt:\\
+\begin{verbatim}
+>>> a = 'Sie sagt "Hallo"'
+\end{verbatim}
+
+\newpage
+
+\subsubsection{Integer}
+Ein Iteger ist eine ganze Zahl, also eine Zahl ohne Nachkommastellen. Geben Sie die folgende Zeile ein, um der Variable a den Wert 1 zuzuweisen und lassen Sie sich dann mit type() den Datentyp anzeigen.\\
+\begin{verbatim}
+>>> a = 1
+>>> type(a)
+<class 'int'>
+\end{verbatim}
+\subsubsection{Gleitkommazahl}
+1.5 ist eine sogenannte Gleitkommazahl (float. oder floating-point number), d.h., eine Zahl, die auch Nachkommastellen hat. Bitte beachten Sie, dass Python nicht -- wie im Deutschen üblich -- ein Komma verwendet, um Nachkommastellen zu signalisieren, sondern einen Punkt.\\
+\subsubsection{Komplexe Zahl}
+Komplexe Zahlen seien hier nur der Vollständigkeit halber erwähnt.\\
+\begin{verbatim}
+>>> a = 2 + 2j
+>>> type (a)
+<class 'complex'>
+\end{verbatim}
+j ist eine imaginäre Zahl mit der Eigenschaften $j^2=-1$. Die Verwendung von j stammt aus den Ingenieurswissenschaften, wohingegen Mathematiker i verwenden, um den Imaginärteil zu kennzeichnen.\\
+
+\subsection{Vorsicht bei Berechnungen}
+Computer speichern und bearbeiten Zahlen im Binärformat, das nur 0 und 1 kennt. So wird etwa die Zahl 7 als 111 dargestellt:\\
+$7_{10}=1\cdot2^2+1\cdot2^1+1\cdot2^0=111_2$\\
+Das funktioniert meist ganz gut, sorgt aber etwa bei Zahlen mit unendlich vielen Nachkommastellen (etwa 1/3, also 0,333333333333...) oder bei bestimmten Brüchen für Probleme, da diese nur annähernd im Binärformat dargestellt und gespeichert werden können.\\
+Hier eine gute Seite für die Umrechnung von Zahlen in verschiedene Formate:\\
+\href{https://www.matheretter.de/rechner/zahlenkonverter}{https://www.matheretter.de/rechner/zahlenkonverter}
+
+\subsection{Zur Zahlendarstellung}
+Seit kurzem (Python 3.6) können Sie Unterstriche verwenden, um Ziffern zu gruppieren und große Zahlen dadurch leichter lesbar zu machen. Das heißt, 1000000 (eine Million) kann auch so geschrieben werden: $1\_000\_000$.\\
+Zahlen werden in Python normalerweise im Dezimalformat dargestellt. Indem man einer Zahl eines von mehreren Präfixen voranstellt, kann man auch ein anderes Format verwendet werden:\\
+\begin{verbatim}
+Präfix              System              Beispiel              Entspricht im Dezimalsystem
+0b                  Binär               0b1111011             123
+0o(Null o)          Oktal               0o173                 123
+0x                  Hexadezimal         0x7B                  123
+\end{verbatim}
+
+\newpage
+
+Sie können diese alternativen Formate auch bei Berechnungen verwenden:\\
+\begin{verbatim}
+>>> 0xA * 0b1010 # 10 (Hexadizamal) * 10 (Binär)
+100
+\end{verbatim}
+\section{Video04}
+\subsection{Kommentare}
+Wenn Sie in Ihrem Python-Code Erklärungen für andere Nutzer oder Erinnerugsstüzen für sich selbst einfügen möchten, können Sie das mit Kommentaren (comments) machen. Diese Kommentare werden bei der Ausführung Ihres Codes ignoriert. Kommentare sind daher auch nützlich, wenn Sie verschiedene Versionen etwa einer Funktion ausprobieren möchten. Die jeweils nicht benötigten Versionen können dann auskommentiert werden.\\
+Kommentare beginnen immer mit "\#". Man kann einem Kommentar entweder an das Ende einer Zeile Code oder, was vorzuziehen ist, in seine eigene Zeile schreiben.\\\\
+OK:\\
+a = 1 # Das ist ein Kommentar.\\
+Besser:\\
+# Das ist auch ein Kommentar.\\\\
+Es gibt in Python nicht, wie in anderen Sprachen, sogenannte Blockkommentare, mit denen man längere Codeblöcke auf einmal auskommentieren kann. Stattdessen müssen alle Zeichen individuell kommentiert werden. Viele Editoren erlauben es Ihnen aber, Blöcke auszuwählen und dann alle darin enthaltenen Zeilen auf einmal auszukommentieren und die "\#" dann auch wieder zu entfernen.\\
+In Spyder können Sie etwa folgendermaßen vorgehen:\\\\
+Zeilen markieren $\rightarrow$ Klick auf die rechte Maustaste $\rightarrow$ "Comment/Uncomment" auswählen.\\
+
+\subsection{Docstrings}
+Später im Kurs werden wir noch Docstrings (document strings) kennenlernen. Diese dienen zur Dokumentation von Funktionen, Methoden, Klassen und Modulen (was das ist, werden wir später noch sehen), während Kommentare eher zu Erklärung von kleinen Code-Fragmenten dienen. Docstrings beginnen und enden mit drei doppelten Anführungszeichen(""") und können über mehrere Zeilen gehen. Beispiel anhand einer Funktion "addieren", die zwei Zahlen addiert:\\
+\begin{verbatim}
+def addieren(a,b):
+    """Addiert zwei Zahlen und gibt die Summe zurück."""
+    return a + b
+\end{verbatim}
+Wenn Sie dann später mehr über diese Funktion wissen möchten, können Sie sich die Docstrings anzeigen lassen.\\
+help(Funktion) gibt dann bsp den gespeicherten docstring aus.\\
+
+\subsection{Unicode}
+Alle Daten, also auch die Zeichen, die Sie auf Ihrem Bildschirm sehen, werden als Bits (0 oder 1) gespeichert.\\
+Anfangs was Speicherplatz extrem teuer und man versuchte wann immer möglich Speicher zu sparen. Aus diesem Grund wurden auch Jahreszahlen oft nur zweistellig gespeichert, was zum Ende des 20.Jahrhunderts einer der Gründe für die aufkommende Angst vor dem Jahr-2000-Problem (Millenium Bug, Y2K-Bug) war. Der befürchtete weitgehende Zusammenbruch digitaler Infrastrukturen blieb jedoch aus.\\\\
+
+\newpage
+
+Zeichensatztabellen (codepages), in denen Zeichen und ihre Bytewerte gespeichert werden, hatten ursprünglich nur wenige Zeichen. ASCII (American Standard Code for Information Interchange) etwa verwendete anfanhs 7 bits, d.h., es können $2^7$, oder 128, Zeichen dargestellt werden. Dazu gehören auch Steuerzeichen wie Tabulator.\\\\
+Spätere Tabellen wurden auf 8 bit (auch eine weitere Form von ASCII) vergrößert, um Sonderzeichen wie etwa die deutschen Umlaute berücksichtigen zu können.\\\\
+Da sich im Laufe der Zeit immer mehr Tabellen entwickelten, um mehr Sprachen abdecken zu können, musste man immer angeben, welche Tabellen in einer Datei verwendet wurde.\\\\
+Jedem einzelnen Zeichen immer mehr Speicher zur Verfügung zu stellen hilft auf die Dauer auch nicht, da dadurch in den meisten Fällen Speicher verschwendet wird.\\\\
+Unicode Lösung: Eine einzelne Tabelle mit jedem bekannten Zeichen und unterschiedliche langen Byte-Sequenzen.\\\\
+Unicode verwendet verschieden Formate, um Zeichen zu kodieren. Das gebräulichste ist UTF-8, welches bis zu 7Bytes pro Zeichen verwendet (für die ASCII-Zeichen benötigte man nur 1Byte, oder 8bit).\\\\
+Seit Python3 werden Zeichenketten automatisch als Unicode gespeichert. Sie können also auch Zeichen wie Schriftzeichen aus verschiedenen asiatischen Sprachen oder Emojis direkt in Zeichenketten verwenden.\\\\
+
+\subsection{Datenstrukturen: Listen}
+Pythons eingebaute Datenstrukturen erlauben es Ihnen aber auch, mehrere Werte auf einmal abzuspeichern. Ein einfaches Beispiel sind Listen (lists)
+\begin{verbatim}
+a = ["apfel", "banane", "banane", "kirsche"]
+b = [1, 2, 4, 5, 8, 17]
+\end{verbatim}
+Listen können auch mehrere Datentypen enthalten:
+\begin{verbatim}
+a = [1, 2, 4, "apfel", "kirsche", "banane"]
+Listen können auch andere Listen enthalten:
+b = [1, 2, [3, 4, 5]]
+\end{verbatim}
+Sie können über den Indexwert eines Wertes, d.h. dessen Position in der Liste, auf diesen zugreifen.\\
+Bitte beachten Sie, dass in Python wie in fast allen anderen Programmiersprachen die Zählung bei 0, nicht bei 1, beginnt.\\
+\begin{verbatim}
+a = [1, 2, 8, 17, 5, 4]
+erster_wert = a[0]
+letzter_wert = a[-1]
+\end{verbatim}
+Es gibt auch eine Vielzahl von nützlichen Funktionen zu Listen, wie etwa sum(), mit der Sie Werte in einer Liste aufaddieren können:
+\begin{verbatim}
+a = [1, 2, 8, 17, 5, 4]
+b = sum(a)
+b
+37
+\end{verbatim}
+Auch können Sie etwa Werte in Listen zählen lassen:
+\begin{verbatim}
+a = [1, 2, 4, "apfel", "kirsche", "banane"]
+a.count("banane")
+2
+\end{verbatim}
+
+\newpage
+
+Es gibt verschiedene Möglichkeiten, Listen sortieren zu lassen:
+\begin{verbatim}
+a = [1, 2, 8, 17, 5, 4]
+a.sort()
+a
+[1, 2, 4, 5, 8, 17]
+\end{verbatim}
+Beachten Sie, dass wir hier die sortierte Liste nicht einer neuen Variable zuweisen. sort() sortiert die Liste in-place, d.h., die Originalliste wie verändert. Wenn Sie die ursprüngliche Liste behalten und stattdessen eine neue, sortierte Liste erzeugen wollen, verwenden Sie sorted():\\
+\begin{verbatim}
+c = sorted(a)       # Die Originalliste a würde nicht verändert werden.
+c
+[1, 2, 4, 5, 8, 17]
+\end{verbatim}
+Die Funktion sortiert Großbuchstaben vor Kleinbuchstaben. Wenn man das nicht will muus man einen key angeben nach dem es dann sortiert wird.
+\begin{verbatim}
+a = ["kirsche", "apfel", "Banane"]
+b = sorted(a, key=str.lower)
+b
+['apfel', 'Banane', 'kirsche']
+\end{verbatim}
+Key wirkt sich hier nicht auf den in der Liste gespeicherten Wert aus, nur darauf, wie er während der Sortierung bahandelt wird.\\
+Wenn Sie zwei Listen zusammenfügen möchten, können Sie das mit dem $+-$ Operator erreichen:
+\begin{verbatim}
+a = [1, 2]
+b = [3, 4]
+c = a + b
+c
+[1, 2, 3, 4]
+\end{verbatim}
+Listen gehören zu den veränderbaren, oder mutablen (mutable) Datenstrukturen. Das bedeutet, dass sie nach ihrer Erzeugung verändert werden können. Im folgenden Beispiel wird das erste Element der Liste a ("banane") durch "birne" ersetzt:
+\begin{verbatim}
+a = ['banane', 'ananas', 'apfel', 'kirsche', 'apfel']
+a[0] = 'birne'
+a
+['birne', 'ananas', 'apfel', 'kirsche', 'apfel']
+\end{verbatim}
+Genauso können Sie auch mehrere Werte auf einmal ändern. Im folgenden Beispiel werden der zweite und dritte Wert der Liste durch zwei andere Werte erstzt.\\
+\begin{verbatim}
+a = ['banane', 'ananas', 'apfel','kirsche', 'apfel']
+a[1:3] = ['erbse', 'gurke']
+a
+['banane', 'erbse', 'gurke', 'kirsche', 'apfel']
+\end{verbatim}
+1 steht hier für den ersten Wert der Verändert wird und 3 für den ersten Wert der gleich bleibt.\\
+
+\newpage
+
+Mit append() können Sie einzelne Werte an eine Liste anfügen. Falls mehrere Werte (etwa aus einer Liste) dazukommen sollen, verwenden Sie extend():\\
+\begin{verbatim}
+a = ['banane', 'ananas', 'apfel','kirsche', 'apfel']
+a.append('erbse')
+a
+a = ['banane', 'ananas', 'apfel','kirsche', 'apfel', 'erbse']
+
+a.extend(['gurke', 'tomate'])
+a
+a = ['banane', 'ananas', 'apfel','kirsche', 'apfel', 'erbse', 'gurke', 'tomate']
+\end{verbatim}
+So wie Sie bestimmte Werte aus einer Liste auswählen zu können, so können Sie auch einzelne oder mehrere Werte aus einer Liste löschen:\\
+\begin{verbatim}
+a = ['banane', 'ananas', 'apfel','kirsche', 'apfel', 'erbse', 'gurke', 'tomate']
+del a[0] # Löscht den ersten Wert, a hat jetzt 7 Werte.
+a
+del a[1:3] # Löscht den zweite und dritte Wert. a hat jetzt 5 Werte.
+
+del a[0:5:2] # Löscht ersten, dritten, fünften usw. Wert. a hat jetzt 2 Werte.
+a
+['apfel', 'gurke']
+\end{verbatim}
+
+\subsection{Tupel}
+Im Vergleich zu Listen haben Tupel (tupels) zwar eine ähnliche Struktur, bieten aber weniger Flexibílität, da sie unveränderbar (immutabel, immutable) sind. Tupel werden mit runden Klammern erzeugt:\\
+\begin{verbatim}
+a = ('banane', 'ananas', 'apfel', 'kirsche', 'apfel')
+\end{verbatim}
+Werte in einem Tupen können wieder über ihre Indexwerte adressiert werden:
+\begin{verbatim}
+a = ('banane', 'ananas', 'apfel', 'kirsche', 'apfel')
+a[0]
+'banane'
+
+a[0:3]
+('banane', 'ananas', 'apfel')
+\end{verbatim}
+Was passiert wenn Sie versuchen, einen Wert aus dem Tupel zu löschen?\\
+Operationen, welche ein Tupel verändern würden, führen zu Fehlermeldungen.\\
+Bei der Erzeugung eines Tupel können Sie die runden Klammern auch weglassen\\
+\begin{verbatim}
+person = 'karl', 'theodor', 'mustermann'
+\end{verbatim}
+Das Zuweisen von Werten zu einem Tupel heißt Tuple Packing. Beim Tuple Unpacking können Sie dann jeden der Werte im Tupel einer Variablen zuweisen und so dann gezielt aufrufen. Auf diese Weise kann man auch in einer Zeile mehrere Variablen erzeugen. Auch beim Tuple Unpacking können die runden Klammern weggelassen werden.\\
+\begin{verbatim}
+vorname, patenname, nachname = person
+vorname
+'karl'
+\end{verbatim}
+
+\newpage
+
+\subsection{String-Formattierung}
+Wenn Sie Werte, die Sie etwa in einer Liste oder einem Tupel gespeichert haben, zu einem Satz zusammenfügen wollen, steht Ihnen die join()-Funktion zu Verfügung:
+\begin{verbatim}
+a = ['Das', 'ist', 'ein', 'Satz']
+b = " ".join(a)
+b
+'Das ist ein Satz'
+\end{verbatim}
+Wenn Sie in den Anführungszeichen kein Trennzeichen angeben, werden die Werte ohne Unterbrechung zusammengesetzt:
+\begin{verbatim}
+a = ['https://', 'www', '.', 'uni-tuebingen', '.', 'de']
+b = "".join(a)
+b
+'https://www.uni-tuebingen.de'
+\end{verbatim}
+Bei der Ausgabe von Werten kann man diese etwa in Sätzen einfügen. Dazu bietet Python die format()-Funktion an. Dabei werden geschweifte Klammern {} als Platzhalter eingesetzt, die dann durch die Werte ersetzt werden:
+\begin{verbatim}
+"Heute ist {}, der {}.{}.{}.".format("Mittwoch", 6, 11, 2019)
+'Heute ist Mittwoch, der 6.11.2019.'
+\end{verbatim}
+Die Reihenfolge, in der die werte dabei eigesetzt werden, richtet sich dabei erst einmal danach, wie sie an format() übergeben werden. Sie können jedem Platzhalter auch einen Namen geben und die Werte dann dadurch adressieren:
+\begin{verbatim}
+"Heute ist {wochentag}, der {tag}.{monat}.{jahr}.".format(wochentag="Mittwoch", tag=6, monat=11, jahr=2019)
+'Heute ist Mittwoch, der 6.11.2019.'
+\end{verbatim}
+Soll das Ergebis selbst geschweifte Klammern enthalten, verwenden Sie doppelte Klammern:
+\begin{verbatim}
+"Das sind {g} {k}{{}} und das sind {r} {k}().".format(g="geschweifte", r="runde", k="klammern")
+'Das sind geschweifte Klammern{} und das sind runde Klammern().'
+\end{verbatim}
+Wie Sie sehen, kann ein Platzhalter auch mehrere Male verwendet werden, wenn Sie ihm einen Namen zugewiesen haben.\\\\
+Wenn Sie einen der eingeführten Werte noch ändern müssen (etwa eine Zahl runden), kann dies als Teil das Formatierungsprozesses geschehen. Hier etwa wird eine Zahl (von Typ float) mit fünf Nachkommastellen auf zwei Nachkommastellen gerundet, um einen Eurobetrag angeben zu können:\\
+\begin{verbatim}
+a = 36.85739
+"Die durchschnittlichen Kosten betrugen {:.2f} Euro.".format(a)
+\end{verbatim}
+Es können auch Werte aus Listen und Tupel in strings einfügen.
+\begin{verbatim}
+datum = ["Mittwoch", 6, 11, 2019]
+"Heute ist {wert[0]}, der {wert[1]}.{wert[2]}.{wert[3]}."format(wert=datum)
+'Heute ist Mittwoch, der 6.11.2019.'
+\end{verbatim}
+
+\newpage
+
+\subsection{Mengen}
+Mengen, oder sets, haben die Eigenschaft, dass in ihnen jedes Element nur einmal vorkommen darf. Es gibt zwei verschiedene Methoden, um sets zu erzeugen:\\
+\textcolor{green}{$set()$} erzeugt eine mutable Menge, d.h., eine Menge, die nachträglich verändert werden kann. Hier wird ein neues set mit Werten aus einem tuple befüllt, daher die doppelten runden Klammern.\\
+\begin{verbatim}
+a = set(('a', 'b', 'c'))
+a
+{'a', 'b', 'c'}
+\end{verbatim}
+\textcolor{green}{$frozenset()$} erzeugt eine immutable Menge, d.h., sie kann nachträglich nicht mehr verändert werden.\\
+\begin{verbatim}
+a = frozenset(('a','b','c'))
+a
+frozenset({'a', 'b', 'c'})
+\end{verbatim}
+Was passiert, wenn Sie versuchen, mehrmals den gleichen Wert in ein set zu packen?
+\begin{verbatim}
+a = (1, 2, 2, 3, 4, 5, 5, 5, 5)
+b = set(a)
+b
+{1, 2, 3, 4, 5}
+\end{verbatim}
+Jeder Wert, der mehrfach vorhanden ist, wird auf eine Erwähnung reduziert.\\
+Was passier wenn Sie versuchen, einmal ein Tupel und dann eine Liste in ein Set eizufügen? Ein Beispiel:
+\begin{verbatim}
+a = set((1, (3,4))) # Zweites Element ist ein Tupel
+a
+{(3, 4), 1}
+Das gleiche mit einer Liste statt einer Tupel gibt eine Fehlermeldung aus.
+\end{verbatim}
+Der Grund für die Fehlermeldung ist, dass sets keine mutablen Elemente, wie etwa Listen, enthalten können; man könnte sonst nicht sicherstellen, dass es später zu keinen duplizierten Werten kommt. Tuples verursachen keine Probleme, da sie immuatable sind.\\
+Dafür sind sets selbst aber mutabel, wenn sie mit set() und nicht mit frozenset() erzeugt wurden.
+\begin{verbatim}
+a = set((1, 2, 3, 4))
+a.add(5)
+a
+{1, 2, 3, 4, 5}
+\end{verbatim}
+\subsection{Operatoren und Methoden für Mengen}
+\begin{verbatim}
+Operator      Beispiel        Erklärung                                           Werte  Äqui Methode
+in            x in a          Ist Wert x in der Menge a?                          T/F    valente   
+not in        x not in a      Ist Wert x nicht in der Menge a?                    T/F           
+<=            a <= b          Ist a eine Teilmenge von b?                         T/F  a.issubset(b)
+<             a < b           Ist a eine echte Teilmenge von b, d.h., es gibt     T/F
+                              mindestens ein Element in b, das nicht in a ist     T/F                     
+>=            a >=b           Ist b eine Teilmenge von a?                         T/F  a.issuperset(b)
+>             a > b           Ist b eine echte Teilmenge von a?                   T/F
+\end{verbatim}
+
+\newpage
+
+Beispiel:
+\begin{verbatim}
+a = set([1, 2, 3, 4, 5, 6])
+b = 5
+if b in a:
+    print("b ist in a")
+
+b ist in a
+\end{verbatim}
+\subsection{Operatoren und Methoden für Mengen II}
+\begin{verbatim}
+Operator   Beispiel    Erklärung
+|          a|b         Neue Menge, die alle Werte von a und b enthält
+&          a&b         Schnittmenge von a und b
+-          a-b         Menge mit allen Elementen aus a, außer denen die auch in b sind
+^          a^b         Menge mit Elementen, die entweder in a oder b sind, aber nicht in beiden
+\end{verbatim}
+Beispiel:
+\begin{verbatim}
+a = set([1, 2, 3, 4, 5, 6])
+b = set([5, 6, 7, 8, 9, 10])
+c = a&b
+c
+{5, 6}
+\end{verbatim}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
