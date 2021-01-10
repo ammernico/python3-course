@@ -12,37 +12,27 @@
 \usepackage{xcolor}
 \usepackage{listings}
 \usepackage{tcolorbox}
-\usepackage{enumitem}
-\usepackage{titlesec}
-\usepackage{minted}
 
 \definecolor{dimgray}{rgb}{0.41, 0.41, 0.41}
 \definecolor{arsenic}{rgb}{0.23, 0.27, 0.29}
-\definecolor{darkgray}{HTML}{303030}
-\definecolor{gray}{HTML}{464646}
-\definecolor{pyblue}{HTML}{306998}
-\definecolor{pyyellow}{HTML}{ffde57}
-\definecolor{pygray}{HTML}{646464}
+\definecolor{darkgray}{html}{303030}
+\definecolor{gray}{html}{464646}
 
+\newtcolorbox{mybox}[3][]
+{
+  colframe = #2!25,
+  colback  = #2!10,
+  coltitle = #2!20!black,  
+  title    = {#3},
+  #1,
+}
 
-\newtcolorbox{mybox}{colback=red!5!white,colframe=red!75!black}
-\newtcolorbox{mybox_1}{colback=pyyellow!5!pyyellow,colframe=pyyellow!75!black}
-\newtcolorbox{mybox_2}{colback=pyblue!5!pyblue,colframe=pyblue!75!black}
-
-
-\setcounter{secnumdepth}{4}
-
-\titleformat{\paragraph}
-{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
-\titlespacing*{\paragraph}
-{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
 \pagecolor{darkgray}
 \color{white}
 
 \begin{document}
 \thispagestyle{empty}
-
 
 \begin{figure}[h!]
 \vskip1in
@@ -81,29 +71,30 @@
 \vskip2cm
 \begin{center}
 \textbf{2020 - 2021}\\
-\textbf{V0.2}
+\textbf{V0.1}
 \end{center}
-\newpage
 
-\tableofcontents
+% End of the first page
+
+% Start of the second page
 
 \newpage
 \section{Video 01}
 Das erste Video ist über das installieren von Python. Deshalb ignoriert.\\
 \section{Video 02 Einführung und Werkzeuge}
 Inhalte des Kurses:
-\begin{enumerate}[noitemsep]
-\item Was ist Python?\\
-\item Grundlagen\\
-\item Variablen und Datentypen\\
-\item Datenstrukturen\\
-\item Kontrollstrukturen\\
-\item Funktionen\\
-\item Objektorientierte Programmierung\\
-\item Datenanalyse und -visualisierung\\
-\item Interaktive Dokumente mit Jupyter Notebook\\
-\end{enumerate}
-
+\begin{align}
+    \item
+    \item Was ist Python?
+    \item Grundlagen
+    \item Variablen und Datentypen
+    \item Datenstrukturen
+    \item Kontrollstrukturen
+    \item Funktionen
+    \item Objektorientierte Programmierung
+    \item Datenanalyse und -visualisierung
+    \item Interaktive Dokumente mit Jupyter Notebook
+\end{align}
 
 \subsection{Was ist Python?}
 Von dem niederländischen Programmierer Guido van Rossum 1989 entwickelt.\\
@@ -127,6 +118,7 @@ Man kann durch ein \textbackslash die Eingabe über mehrere Zeilen aufteilen.\\
 ... Python wartet nun auf die erneute Eingabe des Benutzers\\
 ... 1\\
 2\\\\
+\newpage
 Zum erstellen von Python Files reicht ein normaler Texteditor. Es wird aber ein Code editing Programm empfohlen das die Syntax hervorhebt und mit Code completion arbeitet. Was das arbeiten mit Python deutlich einfacher gestaltet.\\\\
 Warum ist das Einrückungen wichtig sind:\\
 Viele Programmiersprachen verwenden etwa Klammern, um Code in Blöcken zu organisieren. Solche Blöcke können beispielsweise Schleifen sein, in denen man die gleiche Operation für jeden Bestandteil einer Sammlung von Werten ausführen lässt. Hier ist ein Beispiel in R: Es gibt die Zahlen von eins bis zehn nacheinander aus:\\
@@ -161,6 +153,7 @@ Ganzzahldivision            //
 \begin{verbatim}
 print('Hello World!')
 \end{verbatim}
+\\
 Was passiert hier?
 In dieser kurzen Zeile sehen wir bereits einige wichtige Aspekte von Python und auch anderen Programmiersprachen sowie einen der augenfälligsten Unterschiede zwischen Python2 und Python3:\\
 Es gibt Funktionen. Funktionen erlauben es Ihnen, Code für eine bestimmte Aufgabe zu schreiben und diesen dann immer wieder zu verwenden. Viele Funktionen haben Parameter, d.h., Sie können Objekte wie etwa die Phrase "Hello World!" oder eine Zahl als Argumente an die Funktion weitergeben und von der bearbeiten lassen. Man kann die bereits in Python integrierten Funktionen nutzen (wie hier print()) oder eigene Funktionen schreiben.\\
@@ -197,11 +190,11 @@ Danach noch die id() a-d anzeigen lassen.\\
 Als Sie Python gestartet haben, hat Python für einen kleinen Zahlenbereich bereits Objekte erstellt (ganze Zahlen von -5 bis 256) und verwendet sie dann bei der Ausführung Ihres Codes. Python kann dadurch etwas effizienter arbeiten.\\
 \subsubsection{Variablennamen: Regeln}
 Variablennamen können folgende Zeichen beinhalten:\\
-\begin{enumerate}[noitemsep]
+\begin{align}
     \item Buchstaben
     \item Zahlen
     \item Unterstrich
-\end{enumerate}\newline
+\end{align}
 \newpage
 Es bestehen zwei wichtige Einschränkungen: Variablennamen dürfen nur mit einem Unterstrich oder einem Buchstaben beginnen.\\
 Ein weiterer wichtiger Punkt: Python achtet bei Variablennamen auf Groß- und Kleinschreibung.\\
@@ -330,9 +323,9 @@ Sie können diese alternativen Formate auch bei Berechnungen verwenden:\\
 Wenn Sie in Ihrem Python-Code Erklärungen für andere Nutzer oder Erinnerugsstüzen für sich selbst einfügen möchten, können Sie das mit Kommentaren (comments) machen. Diese Kommentare werden bei der Ausführung Ihres Codes ignoriert. Kommentare sind daher auch nützlich, wenn Sie verschiedene Versionen etwa einer Funktion ausprobieren möchten. Die jeweils nicht benötigten Versionen können dann auskommentiert werden.\\
 Kommentare beginnen immer mit "\#". Man kann einem Kommentar entweder an das Ende einer Zeile Code oder, was vorzuziehen ist, in seine eigene Zeile schreiben.\\\\
 OK:\\
-a = 1 \# Das ist ein Kommentar.\\
+a = 1 # Das ist ein Kommentar.\\
 Besser:\\
-\# Das ist auch ein Kommentar.\\\\
+# Das ist auch ein Kommentar.\\\\
 Es gibt in Python nicht, wie in anderen Sprachen, sogenannte Blockkommentare, mit denen man längere Codeblöcke auf einmal auskommentieren kann. Stattdessen müssen alle Zeichen individuell kommentiert werden. Viele Editoren erlauben es Ihnen aber, Blöcke auszuwählen und dann alle darin enthaltenen Zeilen auf einmal auszukommentieren und die "\#" dann auch wieder zu entfernen.\\
 In Spyder können Sie etwa folgendermaßen vorgehen:\\\\
 Zeilen markieren $\rightarrow$ Klick auf die rechte Maustaste $\rightarrow$ "Comment/Uncomment" auswählen.\\
@@ -616,625 +609,16 @@ c = a&b
 c
 {5, 6}
 \end{verbatim}
-\section{Video 05}
-\subsection{Kontrollstrukturen}
-Bevor wir mit der nächsten Datenstruktur weitermachen, sollte wir über Kontrollstrukturen (control structures) sprechen.\\
-Kontrollstrukturen bestimmen den Ablauf einer Programms. Fallunterscheidungen (conditional statements) führen abghängig davon, ob eine oder mehrere Bedingungen erfüllt sind oder nicht, unterschiedlichen Code aus. Schleifen (loops) führen den gleichen Code immer wieder aus.\\
-Schleifen und Fallunterscheidungen können auch miteinander kombiniert werden.\\
-\subsection{Kontrollstrukturen: Fallunterscheidungen mit if}
-if testet, ob eine Bedingung erfüllt ist. Wenn ja, wird der unter if eingerückte Code ausgeführt. Wenn die Bedingung nicht erfüllt ist, geht Python zur nächsten nicht eingerückten Zeile weiter:\\
-\begin{verbatim}
-a = 1
-if a == 1:
-   print("a hat den Wert 1")
-print("Hier gehts weiter!")
-\end{verbatim}
-
-\subsection{Exkurs im Exkurs}
-\subsubsection{Vergleichsoperatoren}
-Sie haben eben schon einen von Pythons Vergleichsoperatoren gesehen, das doppelte Gleichheitszeichen (==). Damit können Sie testen, ob die Werte auf beiden Seiten identisch sind. Hier ist eine Liste mit allen Vergleichsoperatoren:\\
-\begin{tabularx}{17cm}{|X|X|X|}
-\hline
-Operator & Beispiel & Erklärung\\
-\hline
-$==$ & $1 == 2$ & Ist 1 gleich 2?\\
-\hline
-$!=$ & $1 != 2$ & Ist 1 ungleich 2?\\
-\hline
-$<$ & $1 < 2$ & Ist 1 kleiner als 2?\\
-\hline
-$>$ & $1 > 2$ & Ist 1 größer als 2?\\
-\hline
-$<=$ & $1 <= 2$ & Ist 1 kleiner oder gleich 2?\\
-\hline
-$>=$ & $1 >= 2$ & Ist 1 größer oder gleich 2?\\
-\hline
-\end{tabularx}\\
-
-\subsubsection{Logische Operatoren}
-Durch Nutzung mehrerer logischer Operatoren können Sie zwei oder mehr Vergleiche kombinieren:\\
-\begin{tabularx}{17cm}{|X|X|}
-\hline
-Operator & Beispiel\\
-\hline
-and & $(a < b)$ and $(c < d)$\\
-\hline
-\end{tabularx}\\
-Ist 1 kleiner als 2 gleichzeitig 3 kleiner als 4? Beide müssen wahr sein.\\
-\\
-\begin{tabularx}{17cm}{|X|X|}
-\hline
-Operator & Beispiel\\
-\hline
-or & $(a < b)$ or $(c < d)$\\
-\hline
-\end{tabularx}\\
-Ist 1 kleiner als 2 oder 3 kleiner als 4? Nur einer muss wahr sein.\\
-\\
-Mit not können Sie einen Vergleich umkehren: not $(a < b)$ ist das gleiche wie $a >= b$\\
-
-\subsection{Fallunterscheidungen:}
-\subsubsection{if}
-Jetzt wissen wir, wie wir mit Vergleichs- und logischen Operatoren mehrere Bedingungen in einer if-Anweisung testen können:\\
-\begin{verbatim}
-a = 7
-
-if a > 6 and a < 10:
-   print("a ist größer als 6 und kleiner als 10")
-\end{verbatim}
-a ist größer als 6 und kleiner als 10\\
-
-\subsubsection{elif}
-Oft will man aber nicht nur eine Bedingung testen. Wenn Sie einer zweite Bedingung hinzufügen möchten, dann können Sie das mit elif tun:\\
-\begin{verbatim}
-a = 5
-if a > 6 and a < 10:
-   print("a ist größer als 6 und kleiner als 10")
-elif a > 4 and a <= 6:
-   print("a ist größer als 4 und kleiner als oder gleich 6")
-\end{verbatim}
-a ist größer als 4 und kleiner als oder gleich 6\\
-\\
-Sie können beliebig viele Bedingungen mit elif anfügen, solange Sie am Anfang eine einzelne if-Bedingung stehen haben:\\
-\begin{verbatim}
-a = 1
-if a > 6 and a < 10:
-   print("a ist größer als 6 und kleiner als 10")
-elif a > 4 and a <= 6:
-   print("a ist größer als 4 und kleiner als oder gleich 6")
-elif a > 2 and a <= 4:
-   print("a ist größer als 2 und kleiner als oder gleich 4")
-elif a > 0 and a <= 2:
-   print("a ist größer als 0 und kleiner als oder gleich 2")
-\end{verbatim}
-a ist größer als 0 und kleiner als oder gleich 2\\
-
-
-\subsubsection{else}
-Schließlich können Sie am Schluß noch mit else alle anderen Fälle abfangen:\\
-\begin{verbatim}
-a = -1
-if a > 6 and a < 10:
-   print("a ist größer als 6 und kleiner als 10")
-elif a > 4 and a <= 6:
-   print("a ist größer als 4 und kleiner als oder gleich 6")
-elif a > 2 and a <= 4:
-   print("a ist größer als 2 und kleiner als oder gleich 4")
-elif a > 0 and a <= 2:
-   print("a ist größer als 0 und kleiner als oder gleich 2")
-else:
-   print("Ihre Zahl liegt nicht zwischen 0 und 10")
-\end{verbatim}
-Ihre Zahl liegt nicht zwischen 0 und 10\\
-Wenn man in a versucht einen String anzugeben bekommt man folgende Fehlermeldung:\\
-TypeError: $'>'$ not supported between instances of $'str'$ and $'int'$\\
-
-\subsection{nesting}
-Sie bekommen eine Fehlermeldung, da Sie versuchen, den Vergleichsoperator mit zwei verschiedenen Datentypen zu verwenden. Hier macht es Sinn, dass man zuerst testet, ob der gewählte Wert eine Zahl ist. Wie Sie im folgenden Beispiel sehen können, kann man if/elif/else ineinander verschachteln (nesting). Wichtig dabei ist, dass für jede Einrückungsstufe die gleiche Anzahl von Leerzeichen verwendet wird (normalerweise 4), was aber normalerweise Ihr Editor für Sie übernimmt.\\
-\begin{verbatim}
-a = 4
-if isinstance(a, (int, float)) == True:
-    if a > 6 and a < 10:
-        print("a ist größer als 6 und kleiner als 10")
-    elif a > 4 and a <= 6:
-        print("a ist größer als 4 und kleiner als oder gleich 6")
-    elif a > 2 and a <= 4:
-        print("a ist größer als 2 und kleiner als oder gleich 4")
-    elif a >= 0 and a <= 2:
-        print("a ist größer als 0 und kleiner als oder gleich 2")
-    else:
-        print("Ihre Zahl liegt nicht zwischen 0 und 10")
-else:
-    print("Bitte wählen Sie eine Zahl als Wert")
-\end{verbatim}
-Bitte wählen Sie eine Zahl als Wert\\
-
-\newpage
-\subsection{conditional expression}
-Mit einem bedingten Ausdruck (conditional expression) können Sie eine if/else- Konstruktion (mit einer Bedingung) kürzen. Die beiden Beispiele geben Ihnen das gleiche Ergebnis:\\
-\begin{verbatim}
-a = 4
-print ("Zahl ist gerade" if a % 2 == 0 else "Zahl ist ungerade")
-\end{verbatim}
-Zahl ist gerade\\
-
-\subsection{Kontrollstrukturen:}
-\subsubsection{Schleifen}
-Mit schleifen können Sie den selben Codeblock mehrmals ausführen lassen. Python bietet Ihnen zwei Wege, um Schleifen zu erzeugen: mit while und for.\\
-Wenn Sie mit while arbeiten, legen Sie eine Bedingung fest; solange die Bedingung erfüllt ist, läuft die Schleife weiter. Erst wenn die Bedingung nicht mehr erfüllt ist, wird die Schleife beendet:\\
-\begin{verbatim}
-a = 1
-while a < 5:
-    print (a)
-    a = a + 1 # Ohne diese Zeile läuft die Schleife endlos weiter da a immer kleiner als 5 bleibt
-print("Fertig!")
-\end{verbatim}
-\begin{verbatim}
-1
-2
-3
-4
-Fertig!
-\end{verbatim}
-
-\subsubsection{Schleifen mit while}
-Sie können Schleifen mit break auch vorzeitig beenden:\\
-\begin{verbatim}
-a = 1
-while a < 5:
-    print (a)
-    if a == 3:
-        break
-    a = a + 1
-print ("Fertig!")
-\end{verbatim}
-\begin{verbatim}
-1
-2
-3
-Fertig!
-\end{verbatim}
-\newpage
-\subsubsection{Schleifen mit for}
-Wenn Sie eine Schleife mit for bilden wollen, benötigen Sie ein iterierbares (iterable) Objekt, wie etwa eine Liste oder ein Tupel. Für jedes Objekt läuft die Schleife einmal. Wenn die Schleife für jedes Element durchgelaufen ist, endet sie.\\
-\begin{verbatim}
-a = ["banane", "kirsche", "apfel", "ananas"]
-for x in a:
-    print (x)
-\end{verbatim}
-\begin{verbatim}
-banane
-kirsche
-apfel
-ananas
-\end{verbatim}
-Sie können genauso gut mit Zahlensequenzen arbeiten. Hier ein Beispiel einer mit range() erzeugten Sequenz aller gerader Zahlen von 20 bis 2:\\
-\begin{verbatim}
-a = range (20, 1, -2)
-for x in a:
-    print (x)
-\end{verbatim}
-\begin{verbatim}
-20
-18
-16
-14
-12
-10
-8
-6
-4
-2
-\end{verbatim}
-Wie bei while- Schleifen können Sie auch bei for Bedingungen eibauen:\\
-\begin{verbatim}
-a = ["banane", "kirsche", "apfel", "ananas"]
-for x in a:
-    if x == "apfel":
-        print(x.upper())
-    else:
-        print(x)
-\end{verbatim}
-\begin{verbatim}
-banane
-kirsche
-APFEL
-ananas
-\end{verbatim}
-\newpage
-\subsubsection{pass}
-Wenn Sie an einem Programm arbeiten, gibt es möglicherweise Stellen, an denen Sie vorerst nur einen Platzhalter benötigen. Dafür können Sie pass verwenden. Die Fallunterscheidung oder Schleife wird dann einfach ignoriert:\\
-\begin{verbatim}
-a = ["banane", "kirsche", "apfel", "ananas"]
-for x in a:
-    if x == "apfel":
-        print(x.upper())
-    elif x == "banane":
-        pass
-    else:
-        print(x)
-\end{verbatim}
-
-\subsection{Zurück zu Datenstrukturen:}
-\subsubsection{Dictionary}
-Ein Dictionary ist eine Datenstruktur, in der Schlüssel-Wert-Paare (key-value-pairs) gespeichert werden.\\
-Dabei muss jeder Schlüssel einmalig sein, die Werte Können sich aber wiederholen. Auch muss der Schlüssel durch einen immutablen Datentypen ausgedrückt werden, z.B. durch eine Zeichenkette, Integer, usw. Dictionaries werden in geschweifte Klammern gesetzt. Sie können das Dictionary in eine Zeile schreiben oder für jeden Eintrag eine neue Zeile beginnen, was bei längeren oder verschachtelten Dictionaries übersichtlicher ist.\\
-\begin{verbatim}
-a = {
-    "Klaus": 31,
-    "Stefanie": 64,
-    "Beate": 11,
-    "Martin": 71
-}
-a
-\end{verbatim}
-\begin{verbatim}
-{'Klaus': 31, 'Stefanie': 64, 'Beate' 11, 'Martin': 74}
-\end{verbatim}
-
-Ein Dictionary kann auch selbst wieder Dicionaries beinhalten. Wenn Sie bspw. für jede Person nicht nur das Alter, sondern auch den Wohnort speichern möchten, können Sie für jede Person ein Dictionary erzeugen, dort Alter und Wohnort speichern und das individuelle Dictionary als Wert mit dem Namen der Person als Schlüssel in einem übergeordneten Dictionary verwenden, wie im folgendem Beispiel:\\
-
-\begin{verbatim}
-b = {
-    "Klaus": {
-        "alter": 31,
-        "wohnort": "Tübingen"
-    },
-    "Stefanie": {
-        "alter": 64,
-        "wohnort": "Rottenburg"
-    },
-    "Beate": {
-        "alter": 11,
-        "wohnort": "Reutlingen"
-    }
-}
-print(b)
-\end{verbatim}
-\begin{verbatim}
-{'Klaus': {'alter': 31, 'wohnort': 'Tübingen'}, 'Stefanie': {'alter': 64, 'wohnort': 'Rottenburg'},
-'Beate': {'alter': 11, 'wohnort': 'Reutlingen'}}
-\end{verbatim}
-\newpage
-\paragraph{Elemente auswählen}\mbox{}\\
-Anders als etwa bei einer Liste oder einem Tupel verwenden Sie bei Dictionaries keine Indexwerte, sondern die Schlüssel, um auf einzelne Elemente zuzugreifen:\\
-\begin{verbatim}
-b["Stefanie"]
-\end{verbatim}
-\begin{verbatim}
-{'alter': 64, 'wohnort': Rottenburg'}
-\end{verbatim}
-\begin{verbatim}
-b["Stefanie"]["wohnort"]
-\end{verbatim}
-\begin{verbatim}
-'Rottenburg'
-\end{verbatim}
-
-\paragraph{Schleifen}\mbox{}\\
-Da Dictionaries iterabel sind, können sie auch in Schleifen (normalerweise for-Schleifen) eingesetzt werden. Das folgende Beispiel verwendet das einfachere Dictionary, das Sie zu Beginn gesehen haben und gibt für jedes Element den Schlüssel aus:\\
-\begin{verbatim}
-for x in a:
-    print(x)
-\end{verbatim}
-\begin{verbatim}
-Klaus
-Stefanie
-Beate
-Martin
-\end{verbatim}
-Sie können sich auch den Wert des Elementes, oder Wert und Schlüssel gleichzeitig ausgeben lassen:\\
-\begin{verbatim}
-for x in a:
-    print(a[x])
-\end{verbatim}
-\begin{verbatim}
-31
-64
-11
-71
-\end{verbatim}
-\begin{verbatim}
-for x in a:
-    print("{} ist {} Jahre alt.".format(x, a[x]))
-\end{verbatim}
-\begin{verbatim}
-Klaus ist 31 Jahre alt.
-Stefanie ist 64 Jahre alt.
-Beate ist 11 Jahre alt.
-Martin ist 71 Jahre alt.
-\end{verbatim}
-
-\paragraph{Funktionen}\mbox{}\\
-Es gibt verschiedene Funktionen, welche die Arbeit mit Dictionaries erleichtern. Im folgenden Beispiel wird items() verwendet; Sie können hiermit sowohl Schlüssel als auch Werten Variablennamen zuweisen:\\
-\begin{verbatim}
-for name, alter in a.items():
-    print("{} ist {} Jahre alt.".format(name, alter))
-\end{verbatim}
-\begin{verbatim}
-Klaus ist 31 Jahre alt.
-Stefanie ist 64 Jahre alt.
-Beate ist 11 Jahre alt.
-Martin ist 71 Jahre alt.
-\end{verbatim}
-\paragraph{Verschachtelt in Schleifen}\mbox{}\\
-Um mit verschachtelten Dictionaries zu arbeiten, können Sie verschachtelte Schleifen verwenden. Zur Erinnerung noch einmal das Dictionary b aus der Sektion Dictionary\\
-Als Beispiel eine verschachtelte Schleife:\\
-\begin{mybox_1}
-\begin{verbatim}
-for k, v in b.items():
-    print(k)
-    for x, y in v.items():
-        print(y)
-\end{verbatim}
-\begin{mybox_2}
-\begin{verbatim}
-Klaus
-31
-Tübingen
-Stefanie
-64
-Rottenburg
-Beate
-11
-Reutlingen
-\end{verbatim}
-\end{mybox_2}
-\end{mybox_1}
-
-Im obigen Beispiel können Sie auch in der ersten Schleife über die Schlüssel auf individuelle Werte zugreifen:\\
-\begin{mybox_1}
-\begin{verbatim}
-for k, v in b.items():
-    print("{} wohnt in {} und ist {} Jahre alt.".format(k, v["wohnort"], v["alter"]))
-\end{verbatim}
-\begin{mybox_2}
-\begin{verbatim}
-Klaus wohnt in Tübingen und ist 31 Jahre alt.
-Stefanie wohnt in Rottenburg und ist 64 Jahre alt.
-Beate wohnt in Reutlingen und ist 11 Jahre alt.
-\end{verbatim}
-\end{mybox_2}
-\end{mybox_1}
-\newpage
-
-\paragraph{Bitte beachten}\mbox{}\\
-Einen Punkt, den Sie bei Dicionaries beachten sollten, ist dass sie ungeordnet sind, d.h. Sie können sich nicht darauf verlassen, dass die Elemente immer in der gleichen Reihenfolge ausgegeben werden. Wenn die Reihenfolge für Sie wichtig ist, können Sie ein geordnetes Dictionary (OrdnetDict) verwenden:\\
-\begin{mybox_1}
-\begin{minted}{python}
-import collections # Dazu gleich mehr!
-
-c = collections.OrderedDict() # Dazu gleich mehr!
-c["a"] = "A"
-c["b"] = "B"
-c["c"] = "C"
-
-for k, v in c.items():
-    print("{}: {}".format(k, v))
-\end{minted}
-\begin{mybox_2}
-\begin{verbatim}
-a: A
-b: B
-c: C
-\end{verbatim}
-\end{mybox_2}
-\end{mybox_1}
-
-\subsection{Module und Pakete importieren}
-Am Beginn des vorherigen Beispiels haben Sie die folgende Zeile gesehen:\\
-\textit{import collections}\\
-Mit dieser Zeile haben Sie das Modul collections in Ihr Programm eingebunden. Module sind einzelne .py-Dateien, die zusätzliche oder modifizierte Funktionen anbieten. Manche kommen mit der Standardinstallation, andere müssen Sie zusätzlich installieren. Pakete enthalten zumeist mehrere Module. Bevor Sie ein Modul oder Paket in Ihrem Programm verwenden, müssen Sie es erst einbinden. Das machen Sie mit import. Zwecks besserer Übersichtlichket sollte die Einbindung zu Beginn Ihres Programms geschehen.\\\\
-
-Wenn Sie Module/Pakete auf diese Weise importieren, wird ein sog. Namensraum (namespace) geschaffen. Das verhindert, dass eine Funtion aus dem importierten Modul oder Paket, welche den gleichen Namen wie eine bereits existierende Funktion hat, diese überschreibt. Deshalb müssen Sie dann vor den Namen der importierten Funktion noch den Namen des Moduls/Paket setzen:\\
-\textit{c = collections.OrderedDict()}\\\\
-Wenn Sie möchten, können Sie auch den Namen ändern, unter dem Sie in Ihrem Programm auf das Modul/Paket verweisen:\\
-\begin{verbatim}
-import collections as neuerName
-c = neuerName.OrderedDict()
-\end{verbatim}
-\newpage
-Es gibt in Python auch einen globalen Namensraum (global namespace). Den verwenden die Funktionen, die Sie bisher verwendet haben. Sie können Module/Pakete auch teilweise oder komplett in diesem Namensraum einbinden:\\
-\begin{verbatim}
-from collections import *
-
-from collections import OrderedDict
-
-from collections import OrderedDict as sorted
-\end{verbatim}
-Sie müssen zwar bei dieser Methode den Namen des Moduls/Pakets nicht mehr extra nennen:\\
-\begin{verbatim}
-from collections import *
-c = OrderedDict()
-\end{verbatim}
-Wenn es aber im globalen Namensraum bereits eine Funktion oder eine Variable mit dem gleichen Namen gibt, kann es passieren, dass diese überschrieben wird.\\
-
-\subsection{Datentabelle:}
-\subsubsection{pandas}
-Wir werden uns als nächstes mit Datentabellen (DataFrames) befassen. Es gibt verschiedene Pakete, welche ähnliche Datenstrukturen bereitstellen; wir werden pandas verwenden. Da es nicht zur "Grundausstattung" von Python gehört, müssen Sie es erst intallieren (was bei einer Pythoninstallation mit Anaconda gleich mitgeschieht) und dann am Anfang Ihres Programms importieren:\\
-\begin{verbatim}
-import pandas as pd
-\end{verbatim}
-Datentabellen ähneln in Ihrer Struktur Exceltabellen: Daten sind zweidimensional organisiert, eine Zeile für jeden Fall und eine Spalte für jede Variable.\\\\
-Datentabellen können auf verschiedene Weisen generiert werden. Eine häufig genutzte Möglichkeit besteht darin, ein Dictionary, welches mehrere Listen gleicher Länge enthält, zu einer Datentabelle zu konvertieren:\\
-\begin{mybox_1}
-\begin{minted}{python}
-daten1 = {'stadt': ['Berlin', 'Hamburg', 'München'],
-'bundesland': ['Berlin', 'Hamburg', 'Bayern'],
-'einwohnerzahl':[3520031,1787408,1450381]}
-df1 = pd.DataFrame(daten1)
-\end{minted}
-\begin{mybox_2}
-\begin{verbatim}
-     stadt bundesland  einwohnerzahl
-0   Berlin     Berlin        3520031
-1  Hamburg    Hamburg        1787408
-2  München     Bayern        1450381
-\end{verbatim}
-\end{mybox_2}
-\end{mybox_1}
-Sie können jederzeit neue Reihen hinzufügen. Hier kommt eine neue Stadt hinzu. Beachten Sie den Parameter ignore\_index. Die hinzugefügende Zeile wird als eine series interpretiert, ein eindimensionaler Datentyp, der auch durch pandas implementiert wird und bei dem jeder Wert mit einem Indexwert verknüpft wird. Durch den Parameter wird der Indexwert der series ignortiert:\\
-
-\begin{mybox_1}
-\begin{minted}{python}
-daten2 = {'stadt': 'Köln', 'bundesland': 'Nordrhrein-Westfalen', 'einwohnerzahl': 1060582}
-df1 = df1.append(daten2, ignore_index=True)
-\end{minted}
-\begin{mybox_2}
-\begin{verbatim}
-     stadt            bundesland  einwohnerzahl
-0   Berlin                Berlin        3520031
-1  Hamburg               Hamburg        1787408
-2  München                Bayern        1450381
-3     Köln  Nordrhrein-Westfalen        1060582
-\end{verbatim}
-\end{mybox_2}
-\end{mybox_1}
 
 
 
-Wenn Sie mehrere Reihen hinzufügen möchten, können Sie diese zuerst in eine Datentabelle umwandeln und dann mit append ans Ende hängen:\\
 
-\begin{mybox_1}
-\begin{minted}{python}
-daten3 = {'stadt': ['Frankfurt', 'Stuttgart'],
-'bundesland': ['Hessen', 'Baden-Würrttemberg'],
-'einwohnerzahl': [732688,623738]}
-df2 = pd.DataFrame(daten3)
-df1 = df1.append(df2, ignore_index=True)
-\end{minted}
-\begin{mybox_2}
-\begin{verbatim}
-       stadt            bundesland  einwohnerzahl
-0     Berlin                Berlin        3520031
-1    Hamburg               Hamburg        1787408
-2    München                Bayern        1450381
-3       Köln  Nordrhrein-Westfalen        1060582
-4  Frankfurt                Hessen         732688
-5  Stuttgart    Baden-Würrttemberg         623738
-\end{verbatim}
-\end{mybox_2}
-\end{mybox_1}
 
-\subsubsection{Daten laden}
-Sie können mit Pandas auch Daten aus einer externen Datei in eine Datentabelle laden. Dazu bietet Pandas verschiedene Methoden an, welche unterschiedliche Datenformate laden können (z.b. Excel, JSON, SAS, Stata). Hier verwenden wir die read\_csv-Funktion. Diese lädt normalerweise Textdateien mit comma-separated values, d.h., Dateien, in denen die Werte der einzelnen Spalten durch Kommas voneinander getrennt werden. Man kann aber mit dem sep-Parameter aber auch ein anderes Zeichen auswählen; im Beispiel ist das ein Tabulatorzeichen. Bitte beachten Sie, dass der Dateipfad von Computer zu Computer unterschiedlich sein kann.\\\\
-Bei sehr langen Datensätzen können Sie sich mit der Funktion head\(\) auch nur die ersten paar Zeilen anzeigen lassen:\\
-\textit{df2.head()}
 
-\subsubsection{Datentabellen erweitern}
-Nachdem Sie eine Datentabelle erzeugt haben, können Sie diese auch erweitern. So kann man dem Datensatz df2 etwa eine Spalte hinzufügen, in der das Jahr der Weltmeisterschaft aufgeführt wird, falls man irgendwann auch frühere Veranstaltungen berücksichtigen möchte:\\
-\begin{mybox_1}
-\begin{minted}{python}
-df2["wm_jahr"] = 2019
-df2.head()
-\end{minted}
-\end{mybox_1}
-\newpage
 
-Man kann aber auch Spalten einfügen, die auf bereits existierenden Spalten basieren. So können wir etwa in einer neuen Spalte angeben, wie groß die jeweilige Person in Metern und nicht in Zentimetern ist.\\
-\begin{mybox_1}
-\begin{minted}{python}
-df2["groesse_meter"] = df2["groesse"] / 100
-\end{minted}
-\end{mybox_1}
 
-\subsubsection{Spalten auswählen}
-Wenn Sie aus einer Datentabelle eine individuelle Spalte auswählen möchten, können Sie dies tun, indem Sie den Spaltennamen in eckige Klammern setzen:\\
-\begin{mybox_1}
-\begin{minted}{python}
-df2["name"].head()
-\end{minted}
-\end{mybox_1}
 
-Bei mehreren Spalten benötigen Sie zwei Klammern:\\
-\begin{mybox_1}
-\begin{minted}{python}
-df2[["name", "geburtsjahr"]].head()
-\end{minted}
-\end{mybox_1}
 
-\subsubsection{shape und columns}
-Datentabellen haben Attribute, die Eigenschaften der Datentabelle beschreiben. Mit shape können Sie sich beispielsweise die Dimensionen (Anzahl der Zeilen und Spalten) der Datentabelle anzeigen lassen, während columns die Variablennamen ausgibt.\\
-\begin{mybox_1}
-\begin{minted}{python}
-df2.shape
-\end{minted}
-\end{mybox_1}
-
-\begin{mybox_1}
-\begin{minted}{python}
-df2.columns
-\end{minted}
-\end{mybox_1}
-
-\subsubsection{value\_counts()}
-Bei der Arbeit mit Datentabellen stehen Ihnen zahlreiche Funktionen zur Auswahl. So können Sie sich etwa mit value\_count() anzeigen lassen, wie oft jeder Wert in einer Spalte vorkommt. Mit dem folgenden Beispiel kann man etwa für jede Größenangabe sehen, wie viele Spielerinnen in diese Kategorie fallen.\\
-\begin{mybox_1}
-\begin{minted}{python}
-df2["groesse"].value_counts().head()
-\end{minted}
-\end{mybox_1}
-
-\subsubsection{min() und max()}
-min() und max() zeigen Ihnen die Minimal- und Maximalwerte einer Spalte:\\
-\begin{mybox_1}
-\begin{minted}{python}
-df2["groesse"].min()
-\end{minted}
-\end{mybox_1}
-
-\subsubsection{mean()}
-Mit mean() können Sie den Durchschnittswert ausgewählten Spalten berechnen, solange die Spalten numerische Datentypen enthalten:\\
-\begin{mybox_1}
-\begin{minted}{python}
-df2.mean()
-\end{minted}
-\end{mybox_1}
-
-\subsubsection{idxmax() und idxmin()}
-idxmax() und idxmin() geben Ihnen den Indexwert des höchsten bzw. niedrigsten Wertes. Wenn es mehrere Zeilen mit dem gleichen Wert gibt, wird nur die erste Zeile berücksichtigt:\\
-
-\subsubsection{loc und iloc}
-Wenn Sie dann die Indexwerte haben, können Sie den Indexoperator loc verwenden, um die Zeile aus der Datentabelle auszuwählen:\\
-\begin{mybox_1}
-\begin{minted}{python}
-df2[["name", "groesse"]].loc[df2["groesse"].idxmax()]
-\end{minted}
-\end{mybox_1}
-
-\subsubsection{Zeilen auswählen}
-Bei mehreren gleichen Höchstwerten können Sie einen Vergleich und die Funktion max() verwenden (oder min() bei Niedrigstwerten):\\
-\begin{mybox_1}
-\begin{minted}{python}
-df2[["name", "groesse"]].loc[df2["groesse"] == df2["groesse"].max() - 10]
-\end{minted}
-\end{mybox_1}
-
-\subsubsection{groupby()}
-groupby ist immer hilfreich, wenn Sie Ihren Datensatz nach Werten in einer oder mehreren Spalten gruppieren und dann etwa Durchschnittswerte für jede dieser Gruppen berechnen wollen:\\
-\begin{mybox_1}
-\begin{minted}{python}
-df2.groupby("mannschaft")["geburtsjahr"].mean().sort_values()
-\end{minted}
-\end{mybox_1}
-
-\subsubsection{sort\_values()}
-Mit sort\_values() können Sie einen Datensatz sortieren:\\
-\begin{mybox_1}
-\begin{minted}{python}
-df2.sort_values(by=["mannschaft", "groesse"]).head()
-\end{minted}
-\end{mybox_1}
-
-\subsubsection{astype()}
-Mit astype() verändern Sie den Datentyp einer Spalte. So kann man etwa die Werte in einer geeigneten Spalte in Faktoren umwandeln. Am Ende können Sie dann die unterschiedlichen Ausprägungen (categories) des Faktors sehen:\\
-\begin{mybox_1}
-\begin{minted}{python}
-df2["mannschaft"].astype("category").head()
-\end{minted}
-\end{mybox_1}
-
-\section{Video06}
 
 
 
